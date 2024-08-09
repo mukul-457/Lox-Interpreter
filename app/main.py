@@ -21,23 +21,17 @@ def main():
 
 
     if file_contents:
-        scan_parenthesis(file_contents)
-        scan_braces(file_contents)
-
+        scan_for_tokens(file_contents)
+        
     print("EOF  null") # Placeholder, remove this line when implementing the scanner
 
 
-def scan_parenthesis(content):
-    toekens = {"(" : "LEFT_PAREN", ")": "RIGHT_PAREN"}    
+def scan_for_tokens(content):
+    tokens = {"(" : "LEFT_PAREN", ")": "RIGHT_PAREN", "{" : "LEFT_BRACE", "}" : "RIGHT_BRACE"}    
     for chr in  content:
-        if chr in toekens:
-            print(toekens[chr], chr , "null")
-    
-def scan_braces(content):
-    tokens = {"{" : "LEFT_BRACE", "}" : "RIGHT_BRACE"}
-    for chr in content:
         if chr in tokens:
-            print(tokens[chr], chr, "null")
+            print(tokens[chr], chr , "null")
+    
 
 if __name__ == "__main__":
     main()
