@@ -21,10 +21,18 @@ def main():
 
     # Uncomment this block to pass the first stage
     if file_contents:
-        raise NotImplementedError("Scanner not implemented")
+        for line in file_contents:
+            scan_parenthesis(line)
+        #raise NotImplementedError("Scanner not implemented")
     else:
         print("EOF  null") # Placeholder, remove this line when implementing the scanner
 
+
+def scan_parenthesis(line):
+    toekens = {"(" : "LEFT_PAREN", ")": "RIGHT_PAREN"}    
+    for chr in  line:
+        print(toekens[chr], chr , "null")
+    
 
 if __name__ == "__main__":
     main()
