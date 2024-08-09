@@ -19,18 +19,16 @@ def main():
     with open(filename) as file:
         file_contents = file.read()
 
-    # Uncomment this block to pass the first stage
+
     if file_contents:
-        for line in file_contents:
-            scan_parenthesis(line)
-        #raise NotImplementedError("Scanner not implemented")
-    else:
-        print("EOF  null") # Placeholder, remove this line when implementing the scanner
+        scan_parenthesis(file_contents)
+
+    print("EOF  null") # Placeholder, remove this line when implementing the scanner
 
 
-def scan_parenthesis(line):
+def scan_parenthesis(content):
     toekens = {"(" : "LEFT_PAREN", ")": "RIGHT_PAREN"}    
-    for chr in  line:
+    for chr in  content:
         print(toekens[chr], chr , "null")
     
 
