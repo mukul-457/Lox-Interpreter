@@ -22,12 +22,15 @@ def main():
 
     if file_contents:
         scan_for_tokens(file_contents)
-        
+
     print("EOF  null") # Placeholder, remove this line when implementing the scanner
 
 
 def scan_for_tokens(content):
-    tokens = {"(" : "LEFT_PAREN", ")": "RIGHT_PAREN", "{" : "LEFT_BRACE", "}" : "RIGHT_BRACE"}    
+    tokens = {"(" : "LEFT_PAREN", ")": "RIGHT_PAREN", 
+              "{" : "LEFT_BRACE", "}" : "RIGHT_BRACE",
+              ".": "DOT", "," : "COMMA", "+": "PLUS",
+              "*": "STAR", "-": "MINUS", ";": "SEMICOLON"}    
     for chr in  content:
         if chr in tokens:
             print(tokens[chr], chr , "null")
