@@ -34,7 +34,7 @@ def scan_for_tokens(content):
               "{" : "LEFT_BRACE", "}" : "RIGHT_BRACE",
               ".": "DOT", "," : "COMMA", "+": "PLUS",
               "*": "STAR", "-": "MINUS", ";": "SEMICOLON"}
-    invalid_tokens = set(["$", "#", "@"])
+    invalid_tokens = set(["$", "#", "@", "%"])
     line_number  = 1    
     for chr in  content:
         if chr in tokens:
