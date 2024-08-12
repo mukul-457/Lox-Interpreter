@@ -30,11 +30,14 @@ def scan_for_tokens(content):
     tokens = {"(" : "LEFT_PAREN", ")": "RIGHT_PAREN", 
               "{" : "LEFT_BRACE", "}" : "RIGHT_BRACE",
               ".": "DOT", "," : "COMMA", "+": "PLUS",
-              "*": "STAR", "-": "MINUS", ";": "SEMICOLON",
-              "=": "EQUAL", "==": "EQUAL_EQUAL"}
+              "*": "STAR", "-": "MINUS", ";": "SEMICOLON"}
     invalid_tokens = set(["$", "#", "@", "%"])
-    line_number  = 1    
+    line_number  = 1
+    equals = 0    
     for chr in  content:
+        if equals and chr != "=":
+            print("EQUAL = null")
+            equals= 0
         if chr in tokens:
             print(tokens[chr], chr , "null")
         elif chr in invalid_tokens:
@@ -42,6 +45,15 @@ def scan_for_tokens(content):
             return_code = 65
         elif chr == "\n":
             line_number += 1
+        elif chr == "=":
+            if equals:
+                print("EQUAL_EQUAL == null")
+                equals = 0
+            else:
+                equals += 1
+    if equals:
+        print("EQUAL = null")
+
     return return_code
         
     
