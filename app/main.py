@@ -33,11 +33,15 @@ def scan_for_tokens(content):
               "*": "STAR", "-": "MINUS", ";": "SEMICOLON"}
     invalid_tokens = set(["$", "#", "@", "%"])
     line_number  = 1
-    equals = 0    
+    equals = 0
+    bangs= 0    
     for chr in  content:
         if equals and chr != "=":
             print("EQUAL = null")
             equals= 0
+        if bangs and chr != "=":
+            print("BANG ! null")
+            bangs = 0
         if chr in tokens:
             print(tokens[chr], chr , "null")
         elif chr in invalid_tokens:
@@ -49,10 +53,18 @@ def scan_for_tokens(content):
             if equals:
                 print("EQUAL_EQUAL == null")
                 equals = 0
+            elif bangs:
+                print("BANG_EQUAL != null")
+                bangs = 0
             else:
                 equals += 1
+        elif chr == "!":
+            bangs += 1
+
     if equals:
         print("EQUAL = null")
+    if bangs:
+        print("BANG ! null")
 
     return return_code
         
