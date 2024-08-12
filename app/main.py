@@ -25,7 +25,6 @@ def main():
 
 
     print("EOF  null") # Placeholder, remove this line when implementing the scanner
-    print(return_code)
     exit(return_code)
 
 
