@@ -21,12 +21,15 @@ def main():
 
 
     if file_contents:
-        scan_for_tokens(file_contents)
+        return_code = scan_for_tokens(file_contents)
+
 
     print("EOF  null") # Placeholder, remove this line when implementing the scanner
+    exit(return_code)
 
 
 def scan_for_tokens(content):
+    return_code= 0
     tokens = {"(" : "LEFT_PAREN", ")": "RIGHT_PAREN", 
               "{" : "LEFT_BRACE", "}" : "RIGHT_BRACE",
               ".": "DOT", "," : "COMMA", "+": "PLUS",
@@ -38,8 +41,10 @@ def scan_for_tokens(content):
             print(tokens[chr], chr , "null")
         elif chr in invalid_tokens:
             print(f"[line {line_number}] Error: Unexpected character: {chr}", file= sys.stderr)
+            return_code = 65
         elif chr == "\n":
             line_number += 1
+    return return_code
         
     
 
