@@ -19,10 +19,7 @@ def main():
     with open(filename) as file:
         file_contents = file.read()
 
-
-    if file_contents:
-        return_code = scan_for_tokens(file_contents)
-
+    return_code = scan_for_tokens(file_contents)
 
     print("EOF  null") # Placeholder, remove this line when implementing the scanner
     exit(return_code)
