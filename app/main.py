@@ -30,10 +30,17 @@ def scan_for_tokens(content):
     tokens = {"(" : "LEFT_PAREN", ")": "RIGHT_PAREN", 
               "{" : "LEFT_BRACE", "}" : "RIGHT_BRACE",
               ".": "DOT", "," : "COMMA", "+": "PLUS",
-              "*": "STAR", "-": "MINUS", ";": "SEMICOLON"}    
+              "*": "STAR", "-": "MINUS", ";": "SEMICOLON"}
+    invalid_tokens = set(["$", "#"])
+    line_number  = 1    
     for chr in  content:
         if chr in tokens:
             print(tokens[chr], chr , "null")
+        elif chr in invalid_tokens:
+            print(f"[line {line_number}] Error: Unexpected character: {chr}", file= sys.stderr)
+        elif chr == "\n":
+            line_number += 1
+        
     
 
 if __name__ == "__main__":
