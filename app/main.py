@@ -35,7 +35,7 @@ class Scanner():
             elif content[i] in self.uni_character_token:
                 print(self.uni_character_token[content[i]] , content[i] , "null")
                 i+=1
-        print("EOF" , "null") 
+        print("EOF" ,"", "null") 
         return exit_code
 
 def main():
