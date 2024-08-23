@@ -1,5 +1,5 @@
 import sys
-
+import scanner as sc
 
 def main():
     # # You can use print statements as follows for debugging, they'll be visible when running tests.
@@ -19,9 +19,9 @@ def main():
     with open(filename) as file:
         file_contents = file.read()
 
-    return_code = scan_for_tokens(file_contents)
+    scaner = sc.Scanner()
+    return_code = scaner.scan_content(file_contents)
 
-    print("EOF  null") # Placeholder, remove this line when implementing the scanner
     exit(return_code)
 
 
