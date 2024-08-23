@@ -20,7 +20,7 @@ class Scanner():
         line_number = 1
         with open(filepath) as file:
             for line in file:
-                rt = rt or self.scan_content(line, line_number)
+                rt = self.scan_content(line, line_number) or rt 
                 line_number+=1
         print("EOF", "" ,"null")
         return rt
@@ -53,6 +53,7 @@ def main():
 
     if len(sys.argv) < 3:
         print("Usage: ./your_program.sh tokenize <filename>", file=sys.stderr)
+        print(sys.argv)
         exit(1)
 
     command = sys.argv[1]
