@@ -24,7 +24,14 @@ class Scanner():
                 line_number+=1
         print("EOF", "" ,"null")
         return rt
-    
+    def find(self,chr ,  i ,content, n):
+        match_index = -1
+        while i < n:
+            if content[i] == chr:
+                match_index = i
+                break
+            i+=1
+        return match_index
     def scan_content(self, content,line_number):
         exit_code = 0
         n =  len(content)
@@ -43,6 +50,14 @@ class Scanner():
             elif content[i] in self.uni_character_token:
                 print(self.uni_character_token[content[i]] , content[i] , "null")
                 i+=1
+            elif content[i] == '"':
+                index = self.find('"', i+1, content, n)
+                if index != -1 :
+                    print("String" ,content[i:index+1], content[i+1:index])
+                    i = index+1
+                else:
+                    print(f"[line {line_number}] Error: Unterminated String.", file= sys.stderr)
+                    break
             else:
                 i+=1
         return exit_code
