@@ -57,6 +57,7 @@ class Scanner():
                     i = index+1
                 else:
                     print(f"[line {line_number}] Error: Unterminated String.", file= sys.stderr)
+                    exit_code = 65
                     break
             else:
                 i+=1
