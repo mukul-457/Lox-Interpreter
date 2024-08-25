@@ -53,7 +53,7 @@ class Scanner():
             elif content[i] == '"':
                 index = self.find('"', i+1, content, n)
                 if index != -1 :
-                    print("String" ,content[i:index+1], content[i+1:index])
+                    print("STRING" ,content[i:index+1], content[i+1:index])
                     i = index+1
                 else:
                     print(f"[line {line_number}] Error: Unterminated String.", file= sys.stderr)
