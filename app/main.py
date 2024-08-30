@@ -191,7 +191,7 @@ class Scanner1():
                 else:
                     self.add_token(TokenType.SLASH)
             case _:
-                report_error(self.line , f"Unexpected character:{chr}")
+                report_error(self.line , f"Unexpected character: {chr}")
 
 
 def runFile(filename) -> None:
