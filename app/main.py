@@ -193,11 +193,6 @@ class Scanner1():
             case _:
                 report_error(self.line , f"Unexpected character:{chr}")
 
-                        
-            
-
-    
-
 
 def runFile(filename) -> None:
     with open(filename) as f:
@@ -221,7 +216,7 @@ def run(source: str) -> None:
 
 def report_error(line:int , message:str , where=""):
     global ERROR
-    print(f"[line {line}] Error {where}: {message}", file=sys.stderr)
+    print(f"[line {line}] Error{where}: {message}", file=sys.stderr)
     ERROR = True
 
 def main():
