@@ -14,6 +14,17 @@
                 "tokenize",
                 "test.lox"
             ]
-        }
+        },
+        {
+            "name": "Lox runner: Current File with Arguments",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                "tokenize",
+                "test.lox"
+            ]
+        }        
     ]
 }
