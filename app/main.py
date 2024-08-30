@@ -14,7 +14,7 @@ class TokenType(Enum):
     PLUS = auto()
     STAR = auto()
     MINUS = auto()
-    SSEMICOLON = auto()
+    SEMICOLON = auto()
     EQUAL = auto()
     BANG = auto()
     LESS = auto()
@@ -150,8 +150,10 @@ class Scanner1():
                 self.add_token(TokenType.COMMA)
             case ".":
                 self.add_token(TokenType.DOT)
+            case ";" :
+                self.add_token(TokenType.SEMICOLON)
             case "-" :
-                self.add_token(TokenType.SSEMICOLON)
+                self.add_token(TokenType.MINUS)                
             case "*":
                 self.add_token(TokenType.STAR)
             case "+":
