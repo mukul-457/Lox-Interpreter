@@ -130,10 +130,16 @@ class Scanner1():
                 while not self.is_at_end() and pattern.match(self.peek()):
                     self.advance()
                 self.add_token(TokenType.NUMBER , float(self.source[self.start:self.current]))
-        
+    
+    def handle_identifier(self):
+        pattern = re.compile("[A-Za-z_]")
+        while not self.is_at_end() and pattern.match(self.peek()):
+            self.advance()        
+        self.add_token(TokenType.IDENTIFIER)
 
     def scan_token(self):
         digits  = re.compile("[0-9]")
+        alphabates  = re.compile("[A-Za-z_]")
         chr = self.advance()
         match chr:
             case "\n":
@@ -180,6 +186,8 @@ class Scanner1():
                     self.add_token(TokenType.GREATER)
             case chr if digits.match(chr):
                 self.handle_number()
+            case chr if alphabates.match(chr):
+                self.handle_identifier()
             case '"':
                 self.handle_string()
             case " ":
