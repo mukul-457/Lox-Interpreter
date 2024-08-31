@@ -69,6 +69,11 @@ class Scanner1():
         self.start = 0 
         self.current = 0
         self.line  = 1
+        self.reserved = {"and":TokenType.AND, "class":TokenType.CLASS, "else":TokenType.ELSE, 
+                         "false":TokenType.FALSE, "for":TokenType.FOR, "fun":TokenType.FUN, 
+                         "if":TokenType.IF, "nil":TokenType.NIL, "or":TokenType.OR, "print":TokenType.PRINT, 
+                         "return":TokenType.RETURN, "super":TokenType.SUPER, "this":TokenType.THIS, 
+                         "true":TokenType.TRUE, "var":TokenType.VAR, "while":TokenType.WHILE}
     
     def is_at_end(self):
         return self.current >= len(self.source)
@@ -136,7 +141,11 @@ class Scanner1():
         pattern = re.compile("[A-Za-z_0-9]")
         while not self.is_at_end() and pattern.match(self.peek()):
             self.advance()
-        self.add_token(TokenType.IDENTIFIER)
+        literal = self.source[self.start: self.current]
+        if (literal in  self.reserved):
+            self.add_token(self.reserved[literal])
+        else:
+            self.add_token(TokenType.IDENTIFIER)
 
     def scan_token(self):
         digits  = re.compile("[0-9]")
